@@ -42,7 +42,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
         <xsl:value-of select="string('noNamespace')"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="translate(normalize-space($uri), ':/\#?&amp;!', '_______')"/>
+        <xsl:value-of select="translate(normalize-space($uri), ':/\#?&amp;!*', '________')"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
