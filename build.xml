@@ -86,7 +86,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
     target dist
   -->
   <target name="deploy" depends="dist">
-  	<copy file="lib/xsddoc.jar" tofile="${env.ANT_HOME}/lib/xsddoc.jar"></copy>
+  	<copy file="lib/xsddoc.jar" tofile="lib/xsddoc.jar"></copy>
   </target>
   <!--
     target dist
