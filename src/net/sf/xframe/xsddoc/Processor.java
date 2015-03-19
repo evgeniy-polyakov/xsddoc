@@ -1209,7 +1209,7 @@ public final class Processor {
      * @return folder name for that URI
      */
     private String getFolderFromURI(final String uri) {
-        return StringUtil.replace(uri, ":/\\#?&!", '_');
+        return StringUtil.replace(uri, ":/\\#?&!\\*", '_');
     }
 
     /**
