@@ -930,9 +930,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
               <xsl:apply-templates select="*|text()" mode="documentation"/>
             </xsl:when>
             <xsl:otherwise>
-              <pre>
+              <!--The pre tag enforces the text to display in a single line-->
+              <!--<pre>-->
                 <xsl:apply-templates select="*|text()" mode="documentation"/>
-              </pre>
+              <!--</pre>-->
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
