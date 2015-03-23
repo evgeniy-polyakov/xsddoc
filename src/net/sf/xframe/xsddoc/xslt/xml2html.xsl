@@ -845,7 +845,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
     </xsl:if>
     <br/>
     <xsl:if test="doc:type">
-      <xsl:for-each select="doc:type">
+      <!-- This is a fix of multiple references to the same type. Only distinct doc:type should be selected -->
+      <xsl:for-each select="doc:type[not(preceding::doc:type/@name = @name)]">
+      <!--<xsl:for-each select="doc:type">-->
         <xsl:sort select="@name"/>
         <xsl:apply-templates select="." mode="subType">
           <xsl:with-param name="indentBlk" select="concat($indentSep, '  |  ')"/>
@@ -897,9 +899,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
       <dl>
         <dt>Local Usage</dt>
         <dd>
-          <xsl:apply-templates select="doc:type" mode="typeList">
-            <xsl:sort select="@name"/>
-          </xsl:apply-templates>
+            <!-- This is a fix of multiple references to the same type. Only distinct doc:type should be selected -->
+            <xsl:apply-templates select="doc:type[not(preceding::doc:type/@name = @name)]" mode="typeList">
+                <xsl:sort select="@name"/>
+            </xsl:apply-templates>
+          <!--<xsl:apply-templates select="doc:type" mode="typeList">-->
+            <!--<xsl:sort select="@name"/>-->
+          <!--</xsl:apply-templates>-->
         </dd>
       </dl>
       <hr/>
